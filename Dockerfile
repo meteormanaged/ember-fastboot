@@ -1,9 +1,7 @@
 FROM buildpack-deps:jessie
 
-RUN echo "America/New_York" | tee /etc/timezone
-RUN dpkg-reconfigure --frontend noninteractive tzdata
-
-FROM buildpack-deps:jessie-curl
+RUN echo "America/New_York" | tee /etc/timezone \
+    && dpkg-reconfigure --frontend noninteractive tzdata
 
 # gpg keys listed at https://github.com/nodejs/node
 RUN set -ex \
